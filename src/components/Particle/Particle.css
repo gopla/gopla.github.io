@@ -1,0 +1,4 @@
+.particle__bg {
+  position: absolute;
+  z-index: -2;
+}
