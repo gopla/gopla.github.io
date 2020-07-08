@@ -15,9 +15,9 @@ class Desc extends Component {
                 Hi! <Typist.Delay ms={500} />
                 I'm Naufal Yudhistira.
               </span>
-              <Typist.Backspace count={26} delay={500} />
+              <Typist.Backspace count={26} delay={1000} />
               <span>Focusing on Backend Development</span>
-              <Typist.Backspace count={31} delay={500} />
+              <Typist.Backspace count={31} delay={1000} />
               <span className="jp_font">よろしくお願いいたします。</span>
             </Typist>
           </div>
