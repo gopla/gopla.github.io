@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&family=Roboto&display=swap');
-
-* {
-  font-family: 'Roboto', sans-serif;
-}
-
-.App {
-  overflow-x: hidden;
-}
