@@ -1,0 +1,44 @@
+section.desc {
+  margin: 10% 0 0 5%;
+  height: 20px;
+}
+
+.desc__title span {
+  color: #e6e500;
+  font-size: 5rem;
+}
+
+.jp_font {
+  font-family: 'Noto Serif JP', serif;
+}
+
+section.subtitle {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.desc__subtitle span {
+  font-size: 3rem;
+  color: #5fc1c7;
+}
+
+@media (max-width: 1080px) {
+  section.desc {
+    margin: 1% 0 0 5%;
+    height: 40px;
+  }
+
+  .desc__subtitle {
+    margin-top: 32%;
+  }
+}
+
+@media (max-width: 1080px) and (orientation: landscape) {
+  section.desc {
+    margin: 1% 0 0 5%;
+  }
+
+  .desc__subtitle {
+    margin-top: 7%;
+  }
+}
