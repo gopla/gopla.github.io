@@ -4,9 +4,9 @@ import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  base: '/gopla.github.io/'
 })

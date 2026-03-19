@@ -1,5 +1,6 @@
 {
   "name": "gopla-porto",
+  "homepage": "https://gopla.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
