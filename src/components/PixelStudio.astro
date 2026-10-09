@@ -1,0 +1,221 @@
+---
+import PixelCharacter from './home/PixelCharacter.astro'
+// An original illustrated room, not a portrait or a depiction of a real office.
+---
+
+<div class="studio-shell">
+  <div class="studio-topline" aria-hidden="true">
+    <span>
+      <i></i> A LITTLE CORNER OF MY WORLD
+    </span>
+    <span>01 / 01</span>
+  </div>
+  <div class="studio-scene">
+    <svg
+      class="pixel-studio"
+      viewBox="0 0 192 154"
+      width="576"
+      height="462"
+      role="img"
+      aria-labelledby="studio-title studio-desc"
+      shape-rendering="crispEdges"
+    >
+      <title id="studio-title">A little pixel workspace</title>
+      <desc id="studio-desc">
+        An original retro illustration of a developer at a glowing computer,
+        with books, plants, and mountains outside the window.
+      </desc>
+      <defs>
+        <pattern
+          id="wall-pattern"
+          width="8"
+          height="8"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width="8" height="8" fill="#292b48" />
+          <rect x="7" y="7" width="1" height="1" fill="#333651" />
+        </pattern>
+        <pattern
+          id="floor-pattern"
+          width="24"
+          height="8"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect width="24" height="8" fill="#45354b" />
+          <path d="M0 7h24M23 0v7" stroke="#35283e" stroke-width="1" />
+        </pattern>
+      </defs>
+      <!-- Distant stars and the stepped silhouette of the room. -->
+      <g class="scene-stars" fill="#d9cda5">
+        <path d="M8 30h2v2H8zM177 20h2v2h-2zM183 55h2v2h-2zM4 92h2v2H4zM173 144h2v2h-2z" />
+        <path d="M25 9h2v2h-2zM93 5h2v2h-2zM167 6h2v2h-2z" opacity=".45" />
+      </g>
+      <path d="M23 18h147v5h6v116h-6v6H23v-6h-6V23h6z" fill="#0c1221" />
+      <rect x="23" y="24" width="147" height="87" fill="url(#wall-pattern)" />
+      <path d="M23 24h147v3H23zM23 27h3v84h-3z" fill="#55506c" />
+      <rect x="23" y="111" width="147" height="26" fill="url(#floor-pattern)" />
+      <path d="M23 111h147v3H23zM23 137h147v4H23z" fill="#6a4761" />
+      <!-- A mountain window, with two complete sky palettes. -->
+      <rect x="102" y="34" width="54" height="53" fill="#171d31" />
+      <rect
+        x="105"
+        y="37"
+        width="48"
+        height="47"
+        fill="#74637e"
+        class="window-sky"
+      />
+      <path d="M105 37h48v17h-48z" fill="#555c84" class="window-upper" />
+      <path d="M105 60h48v7h-48z" fill="#b98b97" />
+      <rect
+        x="139"
+        y="43"
+        width="7"
+        height="7"
+        fill="#f7d899"
+        class="window-moon"
+      />
+      <rect
+        x="136"
+        y="41"
+        width="6"
+        height="6"
+        fill="#555c84"
+        class="window-moon-cutout"
+      />
+      <path
+        d="M105 72h5v-4h4v-5h4v-6h4v6h4v5h4v4h4v-4h4v-5h5v5h4v4h6v12h-48z"
+        fill="#54506f"
+      />
+      <path
+        d="M105 80h7v-4h6v-4h4v4h7v4h7v-4h6v-4h4v4h7v8h-48z"
+        fill="#303c58"
+      />
+      <path d="M127 37h3v47h-3zM105 60h48v3h-48z" fill="#1e253a" />
+      <path d="M99 87h60v4H99zM102 84h54v3h-54z" fill="#6d5573" />
+      <!-- Books, a tiny framed landscape, and a shelf. -->
+      <rect x="35" y="50" width="48" height="4" fill="#997477" />
+      <rect x="35" y="54" width="48" height="3" fill="#46344f" />
+      <rect x="39" y="39" width="5" height="11" fill="#72b8ac" />
+      <rect x="45" y="37" width="5" height="13" fill="#ce8b68" />
+      <rect x="51" y="41" width="4" height="9" fill="#c2b6a5" />
+      <rect x="58" y="35" width="19" height="15" fill="#b5927b" />
+      <rect x="60" y="37" width="15" height="11" fill="#516581" />
+      <path d="M60 46h3v-3h3v-3h3v3h3v3h3v2H60z" fill="#9dbaad" />
+      <rect x="68" y="39" width="3" height="3" fill="#f4d18e" />
+      <!-- Warm wall lamp. -->
+      <rect x="88" y="41" width="3" height="15" fill="#514a62" />
+      <path d="M85 44h9v3h3v7H82v-7h3z" fill="#e7ac70" />
+      <path d="M83 54h13v3H83z" fill="#ffd69a" />
+      <path d="M81 57h17v3H81zM78 60h23v3H78z" fill="#d7a668" opacity=".09" />
+      <!-- Potted plant and a floor book stack. -->
+      <path
+        d="M37 97h3v-8h-4v-7h3v4h3v-12h3v6h4v-4h3v8h-7v13h3v4H37z"
+        fill="#4e8f87"
+      />
+      <path
+        d="M42 81h3v15h-3zM34 85h4v8h4v3h-6v-3h-2zM48 83h4v6h-4z"
+        fill="#82b29a"
+      />
+      <path d="M35 98h15v4H35zM37 102h11v11H37z" fill="#c58d77" />
+      <path d="M37 110h11v3H37z" fill="#8b5d66" />
+      <rect x="35" y="120" width="22" height="5" fill="#627b91" />
+      <rect x="38" y="116" width="18" height="4" fill="#cb9677" />
+      <rect x="38" y="121" width="14" height="2" fill="#d3c2a3" />
+      <!-- Computer and desk, built pixel by pixel. -->
+      <rect x="60" y="68" width="43" height="30" fill="#101a2b" />
+      <rect x="62" y="70" width="39" height="25" fill="#547077" />
+      <rect x="64" y="72" width="35" height="21" fill="#223f4d" />
+      <rect x="64" y="72" width="35" height="3" fill="#3b5966" />
+      <path d="M66 73h1v1h-1zM69 73h1v1h-1zM72 73h1v1h-1z" fill="#8abcb1" />
+      <g class="screen-code">
+        <path
+          d="M68 79h4v2h-4zM74 79h15v2H74zM71 84h9v2h-9zM82 84h11v2H82zM68 89h5v2h-5z"
+          fill="#8ac5ae"
+        />
+        <path d="M91 79h4v2h-4zM74 89h10v2H74z" fill="#d8ac80" />
+        <rect
+          class="screen-cursor"
+          x="86"
+          y="89"
+          width="2"
+          height="2"
+          fill="#f3d4a3"
+        />
+      </g>
+      <path d="M78 98h8v6h-8zM72 103h20v3H72z" fill="#77717c" />
+      <rect x="56" y="106" width="89" height="5" fill="#c18d76" />
+      <rect x="56" y="111" width="89" height="3" fill="#805969" />
+      <path d="M60 114h5v20h-5zM136 114h5v20h-5z" fill="#9f7271" />
+      <path d="M60 131h5v3h-5zM136 131h5v3h-5z" fill="#614857" />
+      <rect x="73" y="104" width="24" height="2" fill="#d9b29a" />
+      <path
+        d="M75 104h2v1h-2zM79 104h2v1h-2zM83 104h2v1h-2zM87 104h2v1h-2z"
+        fill="#726878"
+      />
+      <!-- Coffee and an original developer sprite. -->
+      <path d="M132 99h7v7h-7zM139 100h3v4h-3z" fill="#b5c2ad" />
+      <rect x="133" y="99" width="5" height="2" fill="#4b3a42" />
+      <g class="coffee-steam" fill="#ccb9a2" opacity=".55">
+        <path d="M134 93h1v4h-1zM137 90h1v5h-1z" />
+      </g>
+      <path d="M109 97h20v24h-20zM111 121h16v4h-16z" fill="#876576" />
+      <path d="M109 97h20v4h-20zM129 101h3v18h-3z" fill="#b17e85" />
+      <path d="M118 125h3v8h-3zM110 133h20v3h-20z" fill="#252b3e" />
+      <g
+        class="studio-character-portal"
+        data-character-hero-portal
+        data-character-phase="inactive"
+        aria-hidden="true"
+      >
+        <path d="M133 95h7v2h2v34h-2v2h-7v-2h-2V97h2z" fill="var(--mint)" />
+        <path d="M134 99h5v30h-5z" fill="#211f31" />
+        <path
+          d="M128 101h2v2h-2zM143 118h2v2h-2zM129 128h2v2h-2z"
+          fill="var(--mint)"
+        />
+      </g>
+      <PixelCharacter
+        pose="seated"
+        x={98}
+        y={75}
+        width={32}
+        height={64}
+        source
+      />
+      <!-- A foreground rug and decorative floor pixels. -->
+      <path d="M76 137h58v4h-58zM81 141h48v3H81z" fill="#4e6169" />
+      <path d="M85 138h40v2H85z" fill="#7e8c89" />
+      <path
+        d="M157 117h4v2h-4zM147 127h5v2h-5zM65 126h4v2h-4z"
+        fill="#7c5263"
+      />
+    </svg>
+    <button
+      class="curiosity-star"
+      type="button"
+      aria-label="Collect a curiosity star"
+      title="A little curiosity goes a long way"
+    >
+      <svg
+        viewBox="0 0 16 16"
+        width="32"
+        height="32"
+        fill="currentColor"
+        shape-rendering="crispEdges"
+        aria-hidden="true"
+      >
+        <path d="M6 0h4v4h6v4h-3v3h-1v5H8v-3H6v3H2v-5H1V8H0V4h6z" />
+        <path d="M5 6h2v3H5zm5 0h2v3h-2z" fill="#564634" />
+      </svg>
+    </button>
+  </div>
+  <div class="studio-bottomline">
+    <span>
+      <span class="status-dot"></span> CURIOSITY: ALWAYS ON
+    </span>
+    <span class="star-counter" aria-live="polite" aria-atomic="true">
+      ★ <span data-star-count>0</span>
+    </span>
+  </div>
+</div>

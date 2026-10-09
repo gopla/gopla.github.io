@@ -1,0 +1,37 @@
+---
+interface Props {
+  name: string
+  class?: string
+}
+
+const { name, class: className } = Astro.props
+const paths: Record<string, string> = {
+  arrow: 'M3 11h12V7h-4V4h4v3h4v4h3v3h-3v4h-4v3h-4v-3h4v-4H3z',
+  down: 'M10 3h4v12h4v-4h3v4h-3v4h-4v3h-4v-3H6v-4H3v-4h3v4h4z',
+  external: 'M12 3h9v9h-3V8l-7 7-2-2 7-7h-4zM3 6h6v3H6v9h12v-6h3v9H3z',
+  code: 'M7 4h4v4H7v4H3v-4h4zm0 8h4v4H7v4H3v-4h4zm10-8h-4v4h4v4h4V8h-4zm0 8h-4v4h4v4h4v-4h-4z',
+  heart: 'M3 6h6v3h6V6h6v9h-3v3h-3v3H9v-3H6v-3H3z',
+  pin: 'M6 2h12v3h3v12h-3v3h-3v3H9v-3H6v-3H3V5h3zm3 6v6h6V8z',
+  moon: 'M9 2h6v3H9v9h3v3h9v3h-3v3H6v-3H3V5h6z',
+  sun: 'M10 1h4v4h-4zM10 19h4v4h-4zM1 10h4v4H1zm18 0h4v4h-4zM4 4h3v3H4zm13 0h3v3h-3zM4 17h3v3H4zm13 0h3v3h-3zM8 7h8v2h2v7h-2v2H8v-2H6V9h2z',
+  spark: 'M10 1h4v6h3v3h6v4h-6v3h-3v6h-4v-6H7v-3H1v-4h6V7h3z',
+  terminal:
+    'M2 3h20v18H2zm3 3v12h14V6zm2 2h3v3h3v3h-3v3H7v-3h3v-3H7zm7 6h3v3h-3z',
+  compass: 'M7 2h10v3h4v14h-4v3H7v-3H3V5h4zm3 5v3H7v7h7v-3h3V7z',
+  book: 'M2 4h8v2h4V4h8v16h-8v2h-4v-2H2zm3 3v10h5V7zm9 0v10h5V7z',
+  linkedin: 'M3 3h4v4H3zm0 6h4v12H3zm7 0h4v2h2V9h5v12h-4v-8h-3v8h-4z'
+}
+---
+
+<svg
+  class:list={['pixel-icon', className]}
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="currentColor"
+  shape-rendering="crispEdges"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={paths[name] || paths.spark} fill-rule="evenodd" />
+</svg>

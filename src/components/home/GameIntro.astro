@@ -1,0 +1,251 @@
+---
+import { profile } from '../../data/profile'
+
+const timing = {
+  runStart: 550,
+  runDuration: 2500,
+  ready: 3150,
+  leave: 3750,
+  exit: 650
+}
+const coins = [
+  { x: 112, progress: 0.32 },
+  { x: 184, progress: 0.62 },
+  { x: 256, progress: 0.91 }
+]
+---
+
+<div
+  class="game-intro"
+  data-game-intro
+  data-run-start={timing.runStart}
+  data-run-duration={timing.runDuration}
+  data-ready-at={timing.ready}
+  data-leave-at={timing.leave}
+  data-end-at={timing.leave + timing.exit}
+  style={`--intro-run-start: ${timing.runStart}ms; --intro-run-duration: ${timing.runDuration}ms; --intro-exit-duration: ${timing.exit}ms;`}
+  hidden
+>
+  <div class="intro-shell">
+    <div class="intro-panel" aria-hidden="true">
+      <div class="intro-hud">
+        <span>PLAYER 01</span>
+        <span>WORLD 01</span>
+      </div>
+      <p class="intro-eyebrow">A LITTLE WORLD TO EXPLORE</p>
+      <p class="intro-title">
+        {profile.brand}
+        <span>.</span>
+      </p>
+      <p class="intro-caption">A little world, a lot of curiosity.</p>
+      <svg
+        class="intro-scene"
+        viewBox="0 0 320 112"
+        width="320"
+        height="112"
+        shape-rendering="crispEdges"
+        focusable="false"
+      >
+        <path
+          fill="var(--border)"
+          opacity="0.55"
+          d="M30 22h12v-6h24v6h12v8H30zM216 14h12V8h20v6h12v8h-44z"
+        />
+        <path
+          fill="var(--border)"
+          d="M0 100h320v4H0zM0 108h16v4H0zm32 0h16v4H32zm32 0h16v4H64zm32 0h16v4H96zm32 0h16v4h-16zm32 0h16v4h-16zm32 0h16v4h-16zm32 0h16v4h-16zm32 0h16v4h-16zm32 0h16v4h-16z"
+        />
+        <path fill="var(--soft)" d="M300 38h3v62h-3z" />
+        <path fill="var(--mint)" d="M303 38h13v14h-13z" />
+        {coins.map(({ x, progress }) => (
+          <g
+            class="intro-coin"
+            style={`--coin-at: ${timing.runStart + timing.runDuration * progress}ms`}
+          >
+            <path
+              fill="var(--accent)"
+              d={`M${x - 5} 50h10v3h3v14h-3v3h-10v-3h-3V53h3z`}
+            />
+            <rect
+              x={x - 2}
+              y="54"
+              width="3"
+              height="12"
+              fill="var(--text)"
+              opacity="0.65"
+            />
+          </g>
+        ))}
+        <g class="intro-traveler">
+          <rect x="18" y="98" width="32" height="2" fill="var(--shadow)" />
+          <g class="intro-runner-hop">
+            <g transform="translate(16 64) scale(1.5)">
+              <path fill="var(--mint)" d="M8 2h8v2h2v8H6V4h2z" />
+              <path fill="var(--bg)" d="M8 6h2v2H8zm6 0h2v2h-2z" />
+              <path
+                fill="var(--accent)"
+                d="M6 12h12v6H6zM4 12h2v4H4zm14 0h2v4h-2z"
+              />
+              <path fill="var(--mint)" d="M6 18h5v4H4v-2h2zm7 0h5v2h2v2h-7z" />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="intro-progress">
+        <span class="intro-progress-fill"></span>
+      </div>
+      <div class="intro-status-row">
+        <p class="intro-status" data-intro-status>
+          ENTERING THE WORLD
+        </p>
+        <span class="intro-percentage" data-intro-percentage>
+          00%
+        </span>
+      </div>
+    </div>
+    <button class="intro-skip" type="button" data-intro-skip>
+      Skip intro <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</div>
+
+<!-- Start before the hero is parsed; all motion uses the same scene timings. -->
+<script is:inline>
+  ;(() => {
+    const intro = document.querySelector('[data-game-intro]')
+    if (!(intro instanceof HTMLElement)) return
+
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const navigation = performance.getEntriesByType('navigation')[0]
+    const isRefresh = navigation?.type === 'reload'
+    if (
+      motion.matches ||
+      navigation?.type === 'back_forward' ||
+      (!isRefresh && (location.hash || window.scrollY > 0))
+    )
+      return
+
+    const skipButton = intro.querySelector('[data-intro-skip]')
+    const status = intro.querySelector('[data-intro-status]')
+    const percentage = intro.querySelector('[data-intro-percentage]')
+    const runStart = Number(intro.dataset.runStart)
+    const runDuration = Number(intro.dataset.runDuration)
+    const readyAt = Number(intro.dataset.readyAt)
+    const leaveAt = Number(intro.dataset.leaveAt)
+    const endAt = Number(intro.dataset.endAt)
+    const timers = []
+    let frameId = 0
+    let finished = false
+    let ready = false
+    let leaving = false
+    let lastPercent = -1
+
+    function finish(reveal = true) {
+      if (finished) return
+      finished = true
+      window.cancelAnimationFrame(frameId)
+      timers.forEach((timer) => window.clearTimeout(timer))
+      const restoreFocus = intro.contains(document.activeElement)
+      intro.hidden = true
+      document.dispatchEvent(
+        new CustomEvent('gopla:intro-finished', {
+          detail: { reveal: reveal && !motion.matches }
+        })
+      )
+      document.documentElement.dataset.introState = reveal
+        ? 'complete'
+        : 'skipped'
+      if (!reveal || motion.matches) {
+        document.documentElement.classList.remove('intro-reveal')
+      }
+      document.removeEventListener('keydown', handleKey)
+      window.removeEventListener('wheel', skip)
+      window.removeEventListener('touchmove', skip)
+      window.removeEventListener('pagehide', skip)
+      motion.removeEventListener('change', handleMotion)
+      skipButton?.removeEventListener('click', skip)
+      if (restoreFocus) {
+        document
+          .querySelector('.hero-actions a')
+          ?.focus({ preventScroll: true })
+      }
+    }
+
+    function skip() {
+      finish(false)
+    }
+    function handleKey(event) {
+      if (
+        [
+          'Escape',
+          'Tab',
+          'ArrowDown',
+          'ArrowUp',
+          'PageDown',
+          'PageUp',
+          'Home',
+          'End',
+          ' '
+        ].includes(event.key)
+      )
+        skip()
+    }
+    function handleMotion(event) {
+      if (event.matches) skip()
+    }
+
+    function start() {
+      if (finished) return
+      const startedAt = performance.now()
+      intro.classList.add('is-playing')
+      function frame(now) {
+        if (finished) return
+        const elapsed = now - startedAt
+        const percent = Math.round(
+          Math.min(1, Math.max(0, (elapsed - runStart) / runDuration)) * 100
+        )
+        if (percentage && percent !== lastPercent) {
+          percentage.textContent = `${String(percent).padStart(2, '0')}%`
+          lastPercent = percent
+        }
+        if (!ready && elapsed >= readyAt) {
+          ready = true
+          if (status) status.textContent = 'PLAYER READY!'
+          intro.classList.add('is-ready')
+        }
+        if (!leaving && elapsed >= leaveAt) {
+          leaving = true
+          intro.classList.add('is-leaving')
+          document.documentElement.classList.add('intro-reveal')
+        }
+        if (elapsed >= endAt) {
+          finish()
+          return
+        }
+        frameId = window.requestAnimationFrame(frame)
+      }
+      frameId = window.requestAnimationFrame(frame)
+    }
+
+    // Independent deadline also covers a delayed font or a throttled animation frame.
+    timers.push(window.setTimeout(skip, endAt + 1700))
+    document.addEventListener('keydown', handleKey)
+    window.addEventListener('wheel', skip, { passive: true })
+    window.addEventListener('touchmove', skip, { passive: true })
+    window.addEventListener('pagehide', skip)
+    motion.addEventListener('change', handleMotion)
+    skipButton?.addEventListener('click', skip)
+    intro.hidden = false
+    document.documentElement.dataset.introState = 'playing'
+
+    // Briefly allow the local pixel font to settle without an unbounded loading gate.
+    if (document.fonts?.load) {
+      Promise.race([
+        document.fonts.load('32px "Press Start 2P"'),
+        new Promise((resolve) => timers.push(window.setTimeout(resolve, 350)))
+      ]).then(start, start)
+    } else {
+      start()
+    }
+  })()
+</script>

@@ -1,0 +1,71 @@
+---
+import { experience } from '../../data/profile'
+import CharacterDock from './CharacterDock.astro'
+
+const visibleCount = 3
+const remainingCount = Math.max(0, experience.length - visibleCount)
+---
+
+<div class="experience-timeline">
+  <ol
+    class="timeline-list"
+    id="experience-timeline"
+    aria-label="Work experience"
+  >
+    {experience.map((company, index) => (
+      <li
+        class="timeline-entry"
+        data-experience-extra={index >= visibleCount ? '' : undefined}
+      >
+        <CharacterDock section="experience" track />
+        <div class="timeline-date">
+          <time datetime={company.start}>{company.dates}</time>
+          {company.current && <span class="current-badge">CURRENT</span>}
+        </div>
+        <div class="timeline-content">
+          <h3>{company.company}</h3>
+          <ol
+            class:list={[
+              'timeline-roles',
+              { 'has-multiple-roles': company.roles.length > 1 }
+            ]}
+            aria-label={`Roles at ${company.company}`}
+          >
+            {company.roles.map((role) => (
+              <li class="timeline-role">
+                <h4>{role.title}</h4>
+                {company.roles.length > 1 && (
+                  <p class="timeline-role-date">
+                    <time datetime={role.start}>{role.dates}</time>
+                  </p>
+                )}
+                <p class="timeline-description">{role.description}</p>
+                <ul class="timeline-tags" aria-label="Work areas">
+                  {role.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </li>
+    ))}
+  </ol>
+  {remainingCount > 0 && (
+    <button
+      class="pixel-button timeline-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="experience-timeline"
+      data-experience-toggle
+      data-show-more={`Show more (${remainingCount})`}
+      hidden
+    >
+      <span data-experience-toggle-label>Show more ({remainingCount})</span>
+      <span class="timeline-toggle-sign" aria-hidden="true">
+        +
+      </span>
+    </button>
+  )}
+</div>

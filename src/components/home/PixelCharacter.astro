@@ -1,0 +1,97 @@
+---
+interface Props {
+  pose?: 'seated' | 'standing' | 'walk-a' | 'walk-b' | 'wave'
+  class?: string
+  x?: number
+  y?: number
+  width?: number
+  height?: number
+  source?: boolean
+}
+
+const {
+  pose = 'seated',
+  class: className,
+  x,
+  y,
+  width = 64,
+  height = 128,
+  source = false
+} = Astro.props
+---
+
+<svg
+  class:list={['pixel-character', `pixel-character--${pose}`, className]}
+  viewBox={pose === 'seated' ? '0 0 32 64' : '3 0 32 64'}
+  x={x}
+  y={y}
+  width={width}
+  height={height}
+  data-studio-player={source ? '' : undefined}
+  shape-rendering="crispEdges"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g transform="translate(-98 -75)">
+    <path d="M110 77h14v4h4v14h-4v4h-14v-4h-4V81h4z" fill="#211f31" />
+    <path d="M108 83h3v8h-3zM111 85h13v9h-13zM114 94h8v6h-8z" fill="#c7967e" />
+    <path
+      class="player-eyes"
+      d="M111 85h4v3h-4zM120 86h2v2h-2z"
+      fill="#242333"
+    />
+    <path
+      d="M109 82h2v10h-2zM123 82h3v11h-3zM111 79h13v3H111z"
+      fill="#809aab"
+    />
+    <rect x="124" y="84" width="4" height="7" fill="#536a81" />
+    <g class="player-torso">
+      <path d="M110 99h15v16h-15zM105 101h5v9h-5z" fill="#6ba9a1" />
+      <path d="M110 112h15v3h-15zM110 99h15v3h-15z" fill="#4c7e87" />
+    </g>
+    {pose === 'seated' ? (
+      <g>
+        <path d="M100 104h9v4h-9z" fill="#c7967e" />
+        <path d="M111 115h14v10h-5v-6h-4v8h-5z" fill="#34425a" />
+        <path d="M109 125h7v4h-7zM120 123h8v4h-8z" fill="#d7c4a5" />
+      </g>
+    ) : (
+      <g>
+        <path d="M105 110h4v10h-4z" fill="#c7967e" />
+        {pose === 'wave' ? (
+          <g class="player-wave-arm">
+            <path d="M125 101h4v6h-4z" fill="#6ba9a1" />
+            <path d="M125 101h4v-4h4v-5h-4v3h-4z" fill="#c7967e" />
+          </g>
+        ) : (
+          <g>
+            <path d="M125 101h4v9h-4z" fill="#6ba9a1" />
+            <path d="M125 110h4v10h-4z" fill="#c7967e" />
+          </g>
+        )}
+        {pose === 'walk-a' ? (
+          <g>
+            <path
+              d="M111 115h6v10h-3v8h-5v-13h2zM119 115h6v12h2v6h-6v-10h-2z"
+              fill="#34425a"
+            />
+            <path d="M107 133h7v4h-7zM121 133h10v4h-10z" fill="#d7c4a5" />
+          </g>
+        ) : pose === 'walk-b' ? (
+          <g>
+            <path
+              d="M111 115h6v12h2v6h-6v-10h-2zM119 115h6v10h-3v8h-5v-13h2z"
+              fill="#34425a"
+            />
+            <path d="M113 133h8v4h-8zM117 133h9v4h-9z" fill="#d7c4a5" />
+          </g>
+        ) : (
+          <g>
+            <path d="M111 115h6v18h-6zM119 115h6v18h-6z" fill="#34425a" />
+            <path d="M109 133h8v4h-8zM119 133h10v4h-10z" fill="#d7c4a5" />
+          </g>
+        )}
+      </g>
+    )}
+  </g>
+</svg>

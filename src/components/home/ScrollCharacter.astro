@@ -1,0 +1,28 @@
+---
+import PixelCharacter from './PixelCharacter.astro'
+---
+
+<div
+  class="scroll-character"
+  data-scroll-character
+  data-pose="seated"
+  data-facing="left"
+  data-motion="idle"
+  aria-hidden="true"
+  hidden
+>
+  <div class="scroll-character-visual" data-character-visual>
+    <div class="scroll-character-poses">
+      <PixelCharacter pose="seated" />
+      <PixelCharacter pose="standing" />
+      <PixelCharacter pose="walk-a" />
+      <PixelCharacter pose="walk-b" />
+      <PixelCharacter pose="wave" />
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initializeScrollCharacter } from '../../scripts/scroll-character'
+  initializeScrollCharacter()
+</script>

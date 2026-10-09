@@ -1,0 +1,27 @@
+---
+import { education } from '../../data/profile'
+import PixelIcon from '../PixelIcon.astro'
+---
+
+<section class="education-timeline" aria-labelledby="education-heading">
+  <h3 id="education-heading" class="education-heading">
+    <PixelIcon name="book" /> Education<span class="accent">.</span>
+  </h3>
+  <ol class="timeline-list" aria-label="Education history">
+    {education.map((entry) => (
+      <li class="timeline-entry">
+        <div class="timeline-date">
+          <span>
+            <time datetime={entry.start}>{entry.start}</time>
+            {' — '}
+            <time datetime={entry.end}>{entry.end}</time>
+          </span>
+        </div>
+        <div class="timeline-content">
+          <h4>{entry.institution}</h4>
+          <p class="timeline-description">{entry.qualification}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

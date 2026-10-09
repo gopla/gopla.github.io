@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PixelIcon from '../components/PixelIcon.astro'
+import { profile } from '../data/profile'
+---
+
+<BaseLayout title={`Page not found | ${profile.name}`} noindex>
+  <main id="main" class="not-found container">
+    <p class="eyebrow">LEVEL NOT FOUND</p>
+    <h1>
+      404<span class="accent">.</span>
+    </h1>
+    <h2>A little off the map.</h2>
+    <p>This page doesn't exist. Let's head back to the start.</p>
+    <a class="pixel-button primary" href="/">
+      Back to start <PixelIcon name="arrow" />
+    </a>
+  </main>
+</BaseLayout>

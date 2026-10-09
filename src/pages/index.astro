@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PixelIcon from '../components/PixelIcon.astro'
+import PixelStudio from '../components/PixelStudio.astro'
+import GameIntro from '../components/home/GameIntro.astro'
+import ScrollCharacter from '../components/home/ScrollCharacter.astro'
+import CharacterDock from '../components/home/CharacterDock.astro'
+import ExperienceTimeline from '../components/home/ExperienceTimeline.astro'
+import EducationTimeline from '../components/home/EducationTimeline.astro'
+import { profile, navigation, interests } from '../data/profile'
+---
+
+<BaseLayout>
+  <GameIntro />
+  <ScrollCharacter />
+  <header class="site-header">
+    <div class="container header-inner">
+      <a
+        class="brand"
+        href="#start"
+        aria-label={`${profile.brand} — back to start`}
+      >
+        <span class="brand-mark" aria-hidden="true">
+          <PixelIcon name="code" />
+        </span>
+        <span>
+          {profile.brand}
+          <span class="brand-period">.</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        {navigation.map(({ id, label }) => (
+          <a
+            href={`#${id}`}
+            data-nav={id}
+            class:list={{ active: id === 'start' }}
+            aria-current={id === 'start' ? 'location' : undefined}
+          >
+            <span class="nav-marker" aria-hidden="true">
+              ▸
+            </span>
+            {label}
+          </a>
+        ))}
+      </nav>
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch to day mode"
+        aria-pressed="false"
+        title="Switch to day mode"
+        hidden
+      >
+        <span class="night-icon">
+          <PixelIcon name="moon" />
+        </span>
+        <span class="day-icon">
+          <PixelIcon name="sun" />
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="start" aria-labelledby="intro-heading">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span> PLAYER 01{' '}
+          <span class="eyebrow-divider">/</span> WEB DEVELOPER
+        </p>
+        <h1 id="intro-heading">
+          Hi, I'm
+          <br />
+          <span class="hero-name">{profile.brand}.</span>
+          <span class="hero-spark" aria-hidden="true">
+            ✦
+          </span>
+        </h1>
+        <p class="hero-tagline">
+          Curious about
+          <br class="desktop-break" /> what comes next.
+        </p>
+        <p class="hero-description">{profile.introduction}</p>
+        <div class="hero-actions">
+          <a class="pixel-button primary" href="#about">
+            Get to know me <PixelIcon name="arrow" />
+          </a>
+          <a
+            class="text-link"
+            href={profile.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn <PixelIcon name="external" />
+          </a>
+        </div>
+        <p class="location">
+          <PixelIcon name="pin" /> {profile.location}{' '}
+          <span class="location-divider">·</span> A little corner of the
+          internet
+        </p>
+      </div>
+      <PixelStudio />
+      <a class="scroll-cue" href="#about">
+        <span>SCROLL TO EXPLORE</span>
+        <PixelIcon name="down" />
+      </a>
+    </section>
+
+    <div class="chapter-bar" aria-hidden="true">
+      <div class="container chapter-inner">
+        <span>
+          <PixelIcon name="code" /> BUILDING FOR THE WEB
+        </span>
+        <span>
+          <PixelIcon name="spark" /> ALWAYS CURIOUS
+        </span>
+        <span>
+          <PixelIcon name="heart" /> HUMAN AT THE KEYBOARD
+        </span>
+      </div>
+    </div>
+
+    <section
+      class="section container about-section"
+      id="about"
+      aria-labelledby="about-heading"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">
+          <span class="chapter-number">01</span> CHARACTER PROFILE
+        </p>
+        <h2 id="about-heading">
+          A little about me<span class="accent">.</span>
+        </h2>
+      </div>
+      <div class="about-layout">
+        <aside class="character-card" aria-label="Quick introduction">
+          <div class="card-top">
+            <span>PLAYER PROFILE</span>
+            <PixelIcon name="spark" />
+          </div>
+          <div class="avatar-frame" aria-hidden="true">
+            <CharacterDock section="about" />
+            <svg
+              class="profile-portrait"
+              viewBox="0 0 40 40"
+              width="160"
+              height="160"
+              shape-rendering="crispEdges"
+            >
+              <rect width="40" height="40" fill="#263349" />
+              <path
+                d="M4 6h2v2H4zM33 10h2v2h-2zM7 29h2v2H7zM30 30h2v2h-2z"
+                fill="#61727b"
+              />
+              <path d="M13 9h14v3h3v13h-3v3H13v-3h-3V12h3z" fill="#181e2b" />
+              <path d="M13 16h14v9H13zM16 25h8v5h-8z" fill="#d4a17e" />
+              <path
+                d="M13 16h4v3h-4zM23 18h2v2h-2zM18 23h5v1h-5z"
+                fill="#2d2834"
+              />
+              <path
+                d="M12 13h2v11h-2zM26 13h2v11h-2zM14 10h12v3H14z"
+                fill="#88a8af"
+              />
+              <path d="M10 17h3v6h-3zM27 17h3v6h-3z" fill="#64828b" />
+              <path d="M13 29h14v3h3v8H10v-8h3z" fill="#86c3ae" />
+              <path d="M16 29h8v3h-8zM19 34h2v2h-2z" fill="#4e8c89" />
+            </svg>
+          </div>
+          <h3>{profile.name}</h3>
+          <p>Web developer</p>
+          <div class="profile-rule"></div>
+          <dl>
+            <div>
+              <dt>HOME BASE</dt>
+              <dd>Malang, Indonesia</dd>
+            </div>
+            <div>
+              <dt>DEFAULT MODE</dt>
+              <dd>Curious</dd>
+            </div>
+          </dl>
+          <span class="card-caption">A pixel version of a real person.</span>
+        </aside>
+        <div class="about-story">
+          <p class="story-lead">
+            Web applications.
+            <br />
+            Collaborative experiences.
+            <br />
+            <span class="muted">A lot of curiosity.</span>
+          </p>
+          {profile.about.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+          <div class="skill-tags" aria-label="Areas of experience">
+            <span>Frontend development</span>
+            <span>Full-stack development</span>
+            <span>Web-based games</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="experience-wrapper"
+      id="experience"
+      aria-labelledby="experience-heading"
+    >
+      <div class="section container">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">
+              <span class="chapter-number">02</span> EXPERIENCE LOG
+            </p>
+            <h2 id="experience-heading">
+              Where I've been building<span class="accent">.</span>
+            </h2>
+          </div>
+          <p>
+            From business applications
+            <br /> to collaborative games.
+          </p>
+        </div>
+        <ExperienceTimeline />
+        <EducationTimeline />
+      </div>
+    </section>
+
+    <section
+      class="section container now-section"
+      id="now"
+      aria-labelledby="now-heading"
+    >
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">
+            <span class="chapter-number">03</span> CURRENT CURIOSITIES
+          </p>
+          <h2 id="now-heading">
+            On my radar<span class="accent">.</span>
+          </h2>
+        </div>
+        <p>
+          Technology keeps moving.
+          <br /> So does my curiosity.
+        </p>
+      </div>
+      <div class="interests-grid">
+        {interests.map((interest, index) => (
+          <article class="interest-card">
+            <div
+              class:list={[
+                'interest-top',
+                { 'has-character-dock': index === 0 }
+              ]}
+            >
+              <span class="interest-icon">
+                <PixelIcon name={interest.icon} />
+              </span>
+              <span class="interest-number" aria-hidden="true">
+                {interest.number}
+              </span>
+              {index === 0 && <CharacterDock section="now" />}
+            </div>
+            <p class="interest-category">{interest.category}</p>
+            <h3>{interest.title}</h3>
+            <p>{interest.description}</p>
+            <div class="interest-bottom" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section
+      class="connect-section"
+      id="connect"
+      aria-labelledby="connect-heading"
+    >
+      <div class="container connect-inner">
+        <div class="connect-decoration" aria-hidden="true">
+          <PixelIcon name="heart" />
+        </div>
+        <p class="eyebrow">
+          <span class="chapter-number">04</span> SAY HELLO
+        </p>
+        <h2 id="connect-heading">
+          Good things start
+          <br />
+          with a hello<span class="accent">.</span>
+        </h2>
+        <p>
+          Want to say hello or talk about web development and technology?
+          <br class="desktop-break" /> You can find me on LinkedIn.
+        </p>
+        <div class="connect-actions">
+          <a
+            class="pixel-button primary"
+            href={profile.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <PixelIcon name="linkedin" /> Find me on LinkedIn{' '}
+            <PixelIcon name="external" />
+          </a>
+          <CharacterDock section="connect" />
+        </div>
+        <span class="connect-footnote">
+          Different time zones. Same curiosity.
+        </span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand footer-brand" href="#start">
+        {profile.brand}
+        <span class="brand-period">.</span>
+      </a>
+      <p>
+        © {new Date().getUTCFullYear()} {profile.name} <span>·</span> Web
+        developer
+      </p>
+      <a class="back-top" href="#start">
+        BACK TO START <PixelIcon name="arrow" />
+      </a>
+    </div>
+  </footer>
+  <script>
+    import '../scripts/interactions'
+  </script>
+</BaseLayout>

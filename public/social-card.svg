@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#111827"/>
+  <defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="2" height="2" fill="#303c4f"/></pattern></defs>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <path fill="#a7d8b9" d="M62 65h8v8h-8zM1130 65h8v8h-8zM62 557h8v8h-8zM1130 557h8v8h-8z"/>
+  <text x="96" y="136" font-family="monospace" font-size="20" letter-spacing="4" fill="#a7d8b9">PLAYER 01 / WEB DEVELOPER</text>
+  <text x="92" y="263" font-family="sans-serif" font-weight="700" font-size="58" fill="#f0ebdf">Hi, I'm Naufal Yudhistira.</text>
+  <text x="96" y="340" font-family="sans-serif" font-size="37" fill="#f2bd83">Curious about what comes next.</text>
+  <text x="96" y="455" font-family="sans-serif" font-size="23" fill="#aab5c4">Gopla · Malang, Indonesia</text>
+  <path fill="#a7d8b9" d="M962 193h25v25h25v25h-25v25h-25v25h-25v-25h25v-25h-25v-25h25zM1047 193h25v25h-25v25h25v25h-25v25h-25v-25h25v-25h-25v-25h25z"/>
+  <path fill="#f2bd83" d="M987 343h20v20h-20z"/>
+  <path fill="#303c4f" d="M96 502h1008v2H96z"/>
+  <text x="96" y="545" font-family="monospace" font-size="16" letter-spacing="2" fill="#aab5c4">WEB APPLICATIONS · COLLABORATIVE EXPERIENCES · ALWAYS CURIOUS</text>
+</svg>
