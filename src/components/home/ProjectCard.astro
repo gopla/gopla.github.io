@@ -1,0 +1,80 @@
+---
+import PixelIcon from '../PixelIcon.astro'
+import ProjectArtwork from './ProjectArtwork.astro'
+import type { Project } from '../../data/projects'
+
+interface Props {
+  project: Project
+  index: number
+}
+const { project, index } = Astro.props
+---
+
+<article
+  class:list={[
+    'project-card',
+    {
+      'project-card--featured': project.featured,
+      'project-card--illustrated': project.artwork,
+      'project-card--compact': !project.artwork
+    }
+  ]}
+  aria-labelledby={`${project.id}-heading`}
+>
+  <div class="project-card-top">
+    <span>PROJECT {String(index + 1).padStart(2, '0')}</span>
+    {project.featured ? (
+      <span class="project-featured">
+        <PixelIcon name="spark" /> FEATURED
+      </span>
+    ) : (
+      <PixelIcon name="code" />
+    )}
+  </div>
+  <div class="project-card-body">
+    <div class="project-copy">
+      {project.category && <p class="project-category">{project.category}</p>}
+      <h3 id={`${project.id}-heading`}>{project.name}</h3>
+      {project.description && (
+        <p class="project-description">{project.description}</p>
+      )}
+      {project.technologies && (
+        <ul
+          class="project-technologies"
+          aria-label={`${project.name} technologies`}
+        >
+          {project.technologies.map((technology) => (
+            <li>{technology}</li>
+          ))}
+        </ul>
+      )}
+      {(project.demoUrl || project.repositoryUrl) && (
+        <div class="project-links">
+          {project.demoUrl && (
+            <a
+              class="text-link project-link"
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${project.name} website (opens in a new tab)`}
+            >
+              Visit website <PixelIcon name="external" />
+            </a>
+          )}
+          {project.repositoryUrl && (
+            <a
+              class="text-link project-link"
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.name} on GitHub (opens in a new tab)`}
+            >
+              View on GitHub <PixelIcon name="external" />
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+    {project.artwork && <ProjectArtwork kind={project.artwork} />}
+  </div>
+</article>

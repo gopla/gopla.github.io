@@ -21,6 +21,7 @@ assert.match(html, /Helden Inc/)
 assert.match(html, /Get Aplikasi Indonesia/)
 assert.match(html, /Agentic development/)
 assert.match(html, /href="https:\/\/www.linkedin.com\/in\/gopla\/"/)
+assert.match(html, /href="https:\/\/github.com\/gopla"/)
 assert.equal(meta('robots'), 'index, follow')
 assert.ok(meta('description')?.length > 80)
 assert.equal(meta('og:url'), new URL('/', site).href)
@@ -33,8 +34,42 @@ const ids = new Set(
 )
 for (const anchor of html.matchAll(/href="#([^"]+)"/g))
   assert.ok(ids.has(anchor[1]), `Anchor #${anchor[1]} resolves`)
-for (const id of ['main', 'start', 'about', 'experience', 'now', 'connect'])
+for (const id of [
+  'main',
+  'start',
+  'projects',
+  'about',
+  'experience',
+  'now',
+  'connect'
+])
   assert.ok(ids.has(id), `Section ${id} is rendered at build time`)
+const projectNames = ['SaifuLog', 'Polator', 'Helden Board', 'Helden PER CMS']
+const projectSection = html.match(
+  /<section[^>]+id="projects"[\s\S]*?<\/section>/
+)?.[0]
+assert.ok(projectSection, 'Projects is available without client JavaScript')
+const projectHeadings = [
+  ...projectSection.matchAll(/<h3\b[^>]*>([^<]+)<\/h3>/g)
+].map((match) => match[1].trim())
+assert.deepEqual(
+  projectHeadings,
+  projectNames,
+  'Owner-selected project priority is preserved'
+)
+assert.match(html, /href="#projects"[^>]+data-nav="projects"/)
+assert.ok(
+  html.indexOf('id="education-heading"') < html.indexOf('id="projects"'),
+  'Projects follows Education'
+)
+for (const url of [
+  'https://saifulog.gopla.my.id/',
+  'https://polator.vercel.app/'
+])
+  assert.ok(
+    projectSection.includes(`href="${url}"`),
+    `Project demo links to ${url}`
+  )
 assert.equal(
   ids.size,
   [...html.matchAll(/\bid="([^"]+)"/g)].length,
@@ -49,7 +84,8 @@ const schema = JSON.parse(jsonLd)
 assert.equal(schema['@type'], 'ProfilePage')
 assert.equal(schema.mainEntity.name, 'Naufal Yudhistira')
 assert.deepEqual(schema.mainEntity.sameAs, [
-  'https://www.linkedin.com/in/gopla/'
+  'https://www.linkedin.com/in/gopla/',
+  'https://github.com/gopla'
 ])
 
 assert.ok((await stat('dist/social-card.png')).size > 1000)
@@ -67,7 +103,7 @@ assert.ok(!sitemap.includes('/404'), '404 is excluded from the sitemap')
 assert.match(notFound, /content="noindex, follow"/)
 assert.ok(
   !html.includes('href="tel:') && !html.includes('href="mailto:'),
-  'Public contact is LinkedIn'
+  'Public links do not expose phone numbers or email addresses'
 )
 console.log(
   'Static content, section links, metadata, JSON-LD, sitemap, robots, icons, and 404 checks passed.'

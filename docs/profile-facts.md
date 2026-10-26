@@ -9,9 +9,10 @@ Sumber: isi profil LinkedIn yang ditempelkan langsung oleh pemilik dalam percaka
 - Label profil: Software Developer.
 - Lokasi pribadi: Malang, East Java, Indonesia.
 - LinkedIn: https://www.linkedin.com/in/gopla/
+- GitHub: https://github.com/gopla, explicitly requested by the owner for the Connect section.
 - Identitas untuk website, sesuai keputusan pemilik: web developer lintas industri.
 
-Nomor telepon dan email tersedia dalam materi sumber. Nilainya tidak disalin ke dokumen publik website; publikasi kontak tersebut belum ditentukan. LinkedIn adalah tautan yang secara eksplisit diminta untuk ditambahkan.
+Nomor telepon dan email tersedia dalam materi sumber. Nilainya tidak disalin ke dokumen publik website; publikasi kontak tersebut belum ditentukan. LinkedIn dan GitHub adalah tautan yang secara eksplisit diminta untuk ditambahkan.
 
 ## Employment
 
@@ -49,4 +50,8 @@ The export mentions first-place Software Application LKS awards alongside Malang
 - The owner develops the application side of web-based teambuilding games that combine player collaboration, shared goals, and physical puzzles similar to boardgames.
 - He enjoys following technological developments, including AI and agentic development. This establishes interest, not an AI specialization or a claim about professional AI-agent usage.
 - Public content should be in English, with a playful, experimental visual style inspired by old Nintendo games.
-- Individual projects will be supplied later. General experience can be described without project names, screenshots, confidential material, or invented results.
+- The owner selected SaifuLog as the main project, followed by Polator, Helden Board, and Helden PER CMS, and requested a Projects section matching the existing pixel design.
+- SaifuLog's local README describes expense, income, and transfer tracking with monthly budgets and multiple accounts. The README/package manifest establish React, TypeScript, Firebase, and Tailwind CSS. Use the owner's spelling **SaifuLog**; the README calls it Seifulog.
+- Polator's local README describes a poker calculator; its package manifest establishes React, Firebase, and Tailwind CSS. Its public repository is https://github.com/gopla/polator.
+- The owner requested Projects below Education and supplied live websites: https://saifulog.gopla.my.id/ and https://polator.vercel.app/.
+- Helden Board's local frontend domain glossary establishes task organization, Scrum/Kanban boards, and sprint planning. Helden PER CMS's local domain glossary and content-management guide establish multilingual content, game flows, themes, and per-client settings. Descriptions summarize these existing capabilities; individual responsibilities, measured results, screenshots, and public Helden links are not asserted.

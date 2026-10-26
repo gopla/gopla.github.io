@@ -5,6 +5,7 @@ export const profile = {
   role: 'Web developer',
   location: 'Malang, Indonesia',
   linkedIn: 'https://www.linkedin.com/in/gopla/',
+  github: 'https://github.com/gopla',
   title: 'Gopla | Web Developer',
   description:
     'Meet Naufal Yudhistira, also known as Gopla, a web developer based in Malang, Indonesia, with experience in web applications, collaborative games, and interactive learning.',
@@ -21,8 +22,9 @@ export const navigation = [
   { id: 'start', label: 'Start', number: '00' },
   { id: 'about', label: 'About', number: '01' },
   { id: 'experience', label: 'Experience', number: '02' },
-  { id: 'now', label: 'Now', number: '03' },
-  { id: 'connect', label: 'Connect', number: '04' }
+  { id: 'projects', label: 'Projects', number: '03' },
+  { id: 'now', label: 'Now', number: '04' },
+  { id: 'connect', label: 'Connect', number: '05' }
 ] as const
 
 export const experience = [

@@ -32,7 +32,7 @@ const schema = {
     alternateName: profile.brand,
     jobTitle: profile.role,
     url: site.href,
-    sameAs: [profile.linkedIn],
+    sameAs: [profile.linkedIn, profile.github],
     homeLocation: { '@type': 'Place', name: profile.location },
     description: profile.description
   }

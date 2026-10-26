@@ -1,0 +1,62 @@
+---
+interface Props {
+  kind: 'wallet' | 'cards'
+}
+const { kind } = Astro.props
+---
+
+<div
+  class:list={['project-artwork', `project-artwork--${kind}`]}
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 160 120"
+    width="320"
+    height="240"
+    shape-rendering="crispEdges"
+    focusable="false"
+  >
+    <path
+      d="M12 24h2v2h-2zM144 78h2v2h-2zM26 96h2v2h-2zM130 18h2v2h-2z"
+      fill="var(--soft)"
+    />
+    {kind === 'wallet' ? (
+      <>
+        <path d="M31 97h98v4H31z" fill="var(--shadow)" />
+        <path
+          d="M45 38h68v6H45zM39 44h80v46H39zM45 90h68v6H45z"
+          fill="var(--mint)"
+        />
+        <path d="M45 48h68v36H45zM49 84h60v6H49z" fill="var(--panel)" />
+        <path d="M45 39h58v5H45zM49 33h50v6H49z" fill="var(--border)" />
+        <path d="M97 58h26v22H97z" fill="var(--mint)" />
+        <path d="M103 64h14v10h-14z" fill="var(--bg)" />
+        <path d="M105 66h4v4h-4z" fill="var(--accent)" />
+        <path d="M68 12h16v4h4v16h-4v4H68v-4h-4V16h4z" fill="var(--accent)" />
+        <path d="M72 17h8v3h-5v9h-3z" fill="var(--accent-ink)" />
+        <path d="M115 20h4v4h4v4h-4v4h-4v-4h-4v-4h4z" fill="var(--mint)" />
+        <path d="M28 65h4v4h4v4h-4v4h-4v-4h-4v-4h4z" fill="var(--accent)" />
+      </>
+    ) : (
+      <>
+        <path d="M34 101h99v4H34z" fill="var(--shadow)" />
+        <path d="M34 20h52v4h4v68h-4v4H34v-4h-4V24h4z" fill="var(--border)" />
+        <path d="M36 26h48v64H36z" fill="var(--bg)" />
+        <path
+          d="M53 39h8v4h4v4h4v8h-4v4h-8v5h6v4H49v-4h6v-5h-8v-4h-4v-8h4v-4h6z"
+          fill="var(--mint)"
+        />
+        <path d="M78 34h48v4h4v60h-4v4H78v-4h-4V38h4z" fill="var(--mint)" />
+        <path d="M80 40h44v56H80z" fill="var(--panel)" />
+        <path
+          d="M99 51h6v6h6v6h6v8h-6v6h-6v6h-6v-6h-6v-6h-6v-8h6v-6h6z"
+          fill="var(--accent)"
+        />
+        <path
+          d="M22 53h4v4h4v4h-4v4h-4v-4h-4v-4h4zM132 19h4v4h4v4h-4v4h-4v-4h-4v-4h4z"
+          fill="var(--accent)"
+        />
+      </>
+    )}
+  </svg>
+</div>

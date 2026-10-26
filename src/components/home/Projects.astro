@@ -1,0 +1,28 @@
+---
+import { projects } from '../../data/projects'
+import CharacterDock from './CharacterDock.astro'
+import ProjectCard from './ProjectCard.astro'
+---
+
+<section
+  class="section container projects-section"
+  id="projects"
+  aria-labelledby="projects-heading"
+>
+  <div class="section-heading split-heading">
+    <div>
+      <p class="eyebrow">
+        <span class="chapter-number">03</span> PROJECT INVENTORY
+      </p>
+      <h2 id="projects-heading">
+        Things I've been building<span class="accent">.</span>
+      </h2>
+    </div>
+    <CharacterDock section="projects" />
+  </div>
+  <div class="projects-grid">
+    {projects.map((project, index) => (
+      <ProjectCard project={project} index={index} />
+    ))}
+  </div>
+</section>

@@ -20,7 +20,7 @@ Memperkenalkan diri dan membangun personal branding untuk audiens internasional.
 | Pengalaman            | Frontend, full-stack, Odoo ERP, data engineering, serta aplikasi game teambuilding berbasis web |
 | Konteks game          | Kolaborasi antarpemain, tujuan bersama, dan puzzle fisik seperti boardgame                      |
 | Kontribusi pribadi    | Pengembangan aplikasi gamenya                                                                   |
-| Daftar proyek         | Ditunda; pemilik akan menentukan materi yang dapat ditampilkan kemudian                         |
+| Daftar proyek         | SaifuLog sebagai proyek utama, lalu Polator, Helden Board, dan Helden PER CMS                   |
 | Tautan publik         | LinkedIn: https://www.linkedin.com/in/gopla/                                                    |
 
 Target dua minggu dan kapasitas kerja per minggu bukan persyaratan rilis. Pembahasan berikutnya mengoreksi arah sebelumnya menjadi website untuk perkenalan pribadi.
@@ -34,21 +34,22 @@ Target dua minggu dan kapasitas kerja per minggu bukan persyaratan rilis. Pembah
 - Label backend, student, dan daydreamer berasal dari website lama. Copy baru memakai identitas web developer yang dinyatakan dalam percakapan sekarang.
 - AI dan agentic development adalah minat yang dinyatakan. Klaim keahlian, pemakaian profesional, dan produk AI memerlukan fakta tambahan.
 - Deskripsi pengalaman game tetap umum. Pengalaman frontend pada microlearning dan popup escape rooms disebut dalam materi LinkedIn; nama produk/klien, screenshot, teknologi produk, dan angka dampak belum tersedia untuk publikasi.
-- GitHub ditemukan dalam portofolio lama. Tautan publik versi pertama cukup LinkedIn sampai profil tambahan ditentukan pemilik.
+- GitHub ditemukan dalam portofolio lama. Pemilik kini meminta tautan GitHub https://github.com/gopla di Connect, berdampingan dengan LinkedIn.
 
 ## Usulan struktur
 
-Satu halaman dengan navigasi **Start / About / Experience / Now / Connect**. Experience merangkum peran profesional yang sudah tersedia, sementara proyek individual tetap ditunda.
+Satu halaman dengan navigasi **Start / About / Experience / Projects / Now / Connect**. Projects mengikuti urutan yang ditentukan pemilik, dengan SaifuLog paling menonjol. Experience merangkum peran profesional yang sudah tersedia.
 
-| Bagian     | Peran                                                                             |
-| ---------- | --------------------------------------------------------------------------------- |
-| Start      | Menampilkan nama, identitas web developer, dan intro singkat                      |
-| About      | Menceritakan pekerjaan serta konteks pengalaman game teambuilding                 |
-| Experience | Menampilkan peran profesional terbaru dan merangkum pengalaman sebelumnya         |
-| Now        | Menampilkan ketertarikan pada perkembangan teknologi, AI, dan agentic development |
-| Connect    | Menghubungkan pengunjung ke profil LinkedIn                                       |
+| Bagian     | Peran                                                                                   |
+| ---------- | --------------------------------------------------------------------------------------- |
+| Start      | Menampilkan nama, identitas web developer, dan intro singkat                            |
+| About      | Menceritakan pekerjaan serta konteks pengalaman game teambuilding                       |
+| Experience | Menampilkan peran profesional terbaru dan merangkum pengalaman sebelumnya               |
+| Projects   | Menampilkan SaifuLog, Polator, Helden Board, dan Helden PER CMS sesuai urutan prioritas |
+| Now        | Menampilkan ketertarikan pada perkembangan teknologi, AI, dan agentic development       |
+| Connect    | Menghubungkan pengunjung ke profil LinkedIn dan GitHub                                  |
 
-Daftar proyek ditambahkan kemudian ketika pemilik menyediakan materi. Versi pertama dapat selesai tanpa bagian Projects atau kartu placeholder.
+Pemilik kini meminta section Projects di bawah Education. Deskripsi dan stack SaifuLog serta Polator mengacu pada README dan package manifest repo lokal; deskripsi Helden Board mengacu pada domain glossary repo-nya dan Helden PER CMS pada domain glossary serta panduan pengelolaan konten. Link demo SaifuLog dan Polator diberikan langsung oleh pemilik. Tidak ada screenshot, hasil terukur, atau fitur Helden yang diasumsikan. Section memakai panel pixel, palet siang/malam, dan titik singgah karakter yang sama dengan bagian lain.
 
 ## Usulan visual dan interaksi
 
