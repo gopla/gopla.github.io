@@ -42,11 +42,13 @@ The build writes static assets to `dist/`. The build verification checks crawler
 - [Profile facts](docs/profile-facts.md): facts supplied by the owner and boundaries on interpretation.
 - [Domain vocabulary](CONTEXT.md): terms used in this project.
 - `src/data/profile.ts`: rendered profile, employment history, and interests. Update this file when changing those facts.
+- `src/data/projects.ts`: selected projects in display order: SaifuLog, Polator, Helden Board, and Helden PER CMS. Only add verified descriptions, technologies, and public repository links here.
+- `src/components/home/Projects.astro`: project inventory below Education, with a featured SaifuLog panel, pixel illustrations, and a character stop. `src/styles/projects.css` uses the shared day/night palette and pixel styling.
 - `src/pages/index.astro`: page structure and interface copy.
 - `src/components/PixelStudio.astro`: original illustrative workspace; not a depiction of an actual office.
 - `src/styles/global.css`: responsive layout, theme variables, pixel styling, and reduced-motion support.
 
-Project showcases are deferred. LinkedIn is the published contact link. Helden Inc and Exp Inc. share one experience entry from October 2023 onward, following the owner's confirmation that they are the same company. Other overlapping dates remain as supplied.
+Projects now has its own navigation link and renders all four owner-selected names as static HTML. SaifuLog and Polator descriptions and stacks come from their local project READMEs/package manifests; Polator has a verified public repository link. SaifuLog and Polator link to their owner-supplied live websites. Helden Board is described from its domain glossary, and Helden PER CMS from its domain glossary and content-management guide. Screenshots and public Helden links have not been supplied. Illustrations are decorative pixel artwork, not product screenshots. Connect links to LinkedIn and GitHub; both profiles are included in the Person structured data. Helden Inc and Exp Inc. share one experience entry from October 2023 onward, following the owner's confirmation that they are the same company. Other overlapping dates remain as supplied.
 
 Experience is a company timeline with three companies shown initially and a Show more / Show less button for the rest. Different titles at one company are nested with their own dates, including McEasy's Odoo Developer and Data Engineer roles. Without JavaScript, the complete timeline remains visible. Education is a separate, always-visible timeline. Both timelines live in `src/components/home/` and read `src/data/profile.ts`.
 

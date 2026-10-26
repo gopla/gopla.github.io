@@ -6,7 +6,7 @@ This draft has been implemented with minor interface-copy adaptations. Rendered 
 
 ## Navigation
 
-Start / About / Experience / Now / Connect
+Start / About / Experience / Projects / Now / Connect
 
 ## Start
 
@@ -88,6 +88,21 @@ Publish a separate, always-visible timeline beneath the experience timeline, new
 - **Politeknik Negeri Malang:** Associate's degree in Information Technology · 2018–2021.
 - **SMK Negeri 1 Kepanjen:** Computer Software Engineering · 2015–2018.
 
+## Projects
+
+Eyebrow: **PROJECT INVENTORY**
+
+Heading: **Things I've been building.**
+
+Display order:
+
+1. **SaifuLog** — featured; personal finance. Track expenses, income, transfers, and monthly budgets across accounts. React, TypeScript, Firebase, Tailwind CSS. Website: https://saifulog.gopla.my.id/.
+2. **Polator** — poker calculator. React, Firebase, Tailwind CSS. Website: https://polator.vercel.app/. Public source: https://github.com/gopla/polator.
+3. **Helden Board** — a collaborative workspace for organizing tasks, planning sprints, and tracking work with Scrum and Kanban boards.
+4. **Helden PER CMS** — a content management system for preparing PER games: multilingual content, game flows, and client-specific themes and settings.
+
+Descriptions and stacks for the first two projects come from their local READMEs/package manifests. Pixel illustrations are decorative, not screenshots. Live demo links were supplied by the owner. Helden descriptions come from their repository domain glossaries and the CMS content-management guide. Screenshots and public Helden links have not been provided. No public SaifuLog repository link is included because the repository was unavailable anonymously.
+
 ## Now
 
 Heading:
@@ -118,11 +133,13 @@ Heading:
 
 Body:
 
-> Want to say hello or talk about web development and technology? You can find me on LinkedIn.
+> Want to say hello or talk about web development and technology? Find me on LinkedIn, or explore what I'm building on GitHub.
 
 Link label: **Find me on LinkedIn**
 
 Link target: https://www.linkedin.com/in/gopla/
+
+Secondary button: **Find me on GitHub** → https://github.com/gopla
 
 ## Footer
 

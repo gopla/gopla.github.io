@@ -7,6 +7,8 @@ import ScrollCharacter from '../components/home/ScrollCharacter.astro'
 import CharacterDock from '../components/home/CharacterDock.astro'
 import ExperienceTimeline from '../components/home/ExperienceTimeline.astro'
 import EducationTimeline from '../components/home/EducationTimeline.astro'
+import Projects from '../components/home/Projects.astro'
+import '../styles/projects.css'
 import { profile, navigation, interests } from '../data/profile'
 ---
 
@@ -229,6 +231,8 @@ import { profile, navigation, interests } from '../data/profile'
       </div>
     </section>
 
+    <Projects />
+
     <section
       class="section container now-section"
       id="now"
@@ -237,7 +241,7 @@ import { profile, navigation, interests } from '../data/profile'
       <div class="section-heading split-heading">
         <div>
           <p class="eyebrow">
-            <span class="chapter-number">03</span> CURRENT CURIOSITIES
+            <span class="chapter-number">04</span> CURRENT CURIOSITIES
           </p>
           <h2 id="now-heading">
             On my radar<span class="accent">.</span>
@@ -291,7 +295,7 @@ import { profile, navigation, interests } from '../data/profile'
           <PixelIcon name="heart" />
         </div>
         <p class="eyebrow">
-          <span class="chapter-number">04</span> SAY HELLO
+          <span class="chapter-number">05</span> SAY HELLO
         </p>
         <h2 id="connect-heading">
           Good things start
@@ -300,7 +304,8 @@ import { profile, navigation, interests } from '../data/profile'
         </h2>
         <p>
           Want to say hello or talk about web development and technology?
-          <br class="desktop-break" /> You can find me on LinkedIn.
+          <br class="desktop-break" /> Find me on LinkedIn, or explore what I'm
+          building on GitHub.
         </p>
         <div class="connect-actions">
           <a
@@ -310,6 +315,16 @@ import { profile, navigation, interests } from '../data/profile'
             rel="noopener noreferrer"
           >
             <PixelIcon name="linkedin" /> Find me on LinkedIn{' '}
+            <PixelIcon name="external" />
+          </a>
+          <a
+            class="pixel-button"
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Gopla on GitHub (opens in a new tab)"
+          >
+            <PixelIcon name="code" /> Find me on GitHub{' '}
             <PixelIcon name="external" />
           </a>
           <CharacterDock section="connect" />
